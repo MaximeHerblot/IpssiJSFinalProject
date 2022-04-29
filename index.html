@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/index.css" />
+  </head>
+  <body>
+    <div class="divCurrentDate">
+      <input type="text" class="currentDate" disabled />
+    </div>
+    <div class="divInfoApi">
+      <div class="divPartOneCountry">
+        <label for="countryName">Country name :</label>
+        <input type="text" class="inputOneCountry" name="countryName" />
+        <p class="pError"></p>
+        <div class="infoOneCountry"></div>
+      </div>
+      <div class="divPartAllCountry">
+        <input type="button" class="toggleDirection" value="Column" />
+        <div class="allCountryInfo"></div>
+      </div>
+    </div>
+    <div class="inputFunctionDiv">
+      <div class="partInput">
+        <input type="number" class="inputFunc" />
+        <input type="number" class="inputFunc" />
+        <input type="number" class="inputFunc" />
+      </div>
+      <div class="partInputFunc">
+        <input
+          type="button"
+          data-operator="+"
+          class="btnFunc"
+          value="Sum ALL"
+        />
+        <input
+          type="button"
+          data-operator="-"
+          class="btnFunc"
+          value="Sub ALL"
+        />
+        <input
+          type="button"
+          data-operator="*"
+          class="btnFunc"
+          value="Mult ALL"
+        />
+        <input
+          type="button"
+          data-operator="join"
+          class="btnFunc"
+          value="Join ALL"
+        />
+      </div>
+      <div class="partDisplay">
+        <span></span>
+      </div>
+    </div>
+    <div class="partEscalier">
+      <input
+        class="inputNumberStairs"
+        type="number"
+        min="1"
+        value="1"
+        max="20"
+      />
+      <span class="displayEscalier">*</span>
+    </div>
+  </body>
+
+  <script src="./assets/js/index.js"></script>
+</html>

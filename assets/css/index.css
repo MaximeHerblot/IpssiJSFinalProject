@@ -1,0 +1,27 @@
+.divInfoApi {
+    width: 100%;
+}
+.infoOneCountry, .oneCountry {
+    display: flex;
+    width: 20%;
+    align-items: center;
+}
+
+.textInfoOneCountry {
+    margin: 10px;
+}
+.imgFlag{
+    display: block;
+    position: relative;
+    height: 50px;
+}
+.allCountryInfo {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-direction-column{
+    flex-direction: column;
+}
+.displayEscalier {
+    display: block;
+}
