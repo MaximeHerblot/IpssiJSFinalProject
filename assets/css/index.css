@@ -11,6 +11,11 @@
 }
 .oneCountry {
   width: 19%;
+  background-color: rgba(211, 211, 211, 0.26);
+  transition: 0.5s;
+}
+.oneCountry:hover {
+  background-color: rgba(211, 211, 211, 0.75);
 }
 .infoOneCountry {
   justify-content: center;
