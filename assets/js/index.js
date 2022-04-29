@@ -13,13 +13,41 @@ let allBtnFunc = document.querySelectorAll(".btnFunc");
 let spanPartDisplay = document.querySelector(".partDisplay span");
 let inputNumberStairs = document.querySelector(".inputNumberStairs");
 let spanStairs = document.querySelector(".displayEscalier");
+let buttonPartEscalier = document.querySelectorAll(".buttonPartEscalier");
+let eventChange = new Event("change");
+
+const inputAudio = new Audio("../assets/audio/aTone.mp3");
 const apiOneCountryUrl = "https://restcountries.com/v3.1/name/";
 const apiAllCountryUrl = "https://restcountries.com/v2/all";
 
 //Part Horlorge
 setInterval(() => {
   let currentDate = new Date();
-  currentDateInput.value = `${currentDate.getDate()}/${currentDate.getMonth()} ${currentDate.getHours()}:${currentDate.getMinutes()}`;
+  let hours = "";
+  if (currentDate.getHours().toString().length == 1) {
+    hours = "0" + currentDate.getHours();
+  } else {
+    hours = currentDate.getHours();
+  }
+  let min = "";
+  if (currentDate.getMinutes().toString().length == 1) {
+    min = "0" + currentDate.getMinutes();
+  } else {
+    min = currentDate.getMinutes();
+  }
+  let day = "";
+  if (currentDate.getDate().toString().length == 1) {
+    day = "0" + currentDate.getDate();
+  } else {
+    day = currentDate.getDate();
+  }
+  let month = "";
+  if (currentDate.getMonth().toString().length == 1) {
+    month = "0" + currentDate.getMonth();
+  } else {
+    month = currentDate.getMonth();
+  }
+  currentDateInput.innerHTML = `${day}/${month} ${hours}:${min}`;
 }, 1000);
 
 //Part get one country
@@ -29,6 +57,7 @@ inputOneCountry.addEventListener("change", (e) => {
     alert("Enter a country name pls");
   } else {
     recoverOneCountry(value);
+    inputAudio.play();
   }
 });
 
@@ -49,10 +78,12 @@ const recoverOneCountry = (value) => {
             <img class="imgFlag" src="${flags.svg}" alt="${name.official} flag">
                 
       `;
+          divInfoOneCountry.classList.add("active");
         });
       } else {
         pError.innerHTML = res.statusText;
         divInfoOneCountry.innerHTML = "";
+        divInfoOneCountry.classList.remove("active");
       }
     })
     .catch((err) => (pError.innerHTML = err));
@@ -90,7 +121,11 @@ recoverXCountry();
 //Part changement direction on all country
 inputToggleDirection.addEventListener("click", (e) => {
   divAllCountryInfo.classList.toggle("flex-direction-column");
-  e.target.value = e.target.value == "Column" ? "Line" : "Column";
+  e.target.value =
+    e.target.value == "Display : Columns"
+      ? "Display : Lines"
+      : "Display : Columns";
+  inputAudio.play();
 });
 
 //Part button for js function
@@ -134,6 +169,7 @@ allBtnFunc.forEach((element) => {
         break;
     }
     spanPartDisplay.innerHTML = `Result : ${res}`;
+    inputAudio.play();
   });
 });
 
@@ -153,6 +189,14 @@ inputNumberStairs.addEventListener("change", (e) => {
   spanStairs.innerHTML = stairs;
 });
 
-//Part audio input
-
-let inputAudio = new Audio();
+buttonPartEscalier.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    if (e.target.value == "+" && inputNumberStairs.value < 20) {
+      inputNumberStairs.value++;
+      inputNumberStairs.dispatchEvent(eventChange);
+    } else if (e.target.value == "-" && inputNumberStairs.value > 0) {
+      inputNumberStairs.value--;
+      inputNumberStairs.dispatchEvent(eventChange);
+    }
+  });
+});
