@@ -59,6 +59,7 @@
   width: fit-content;
   border: 1px solid black;
   padding: 5px;
+  background-color: lightcyan;
 }
 fieldset {
   margin: 10px;
